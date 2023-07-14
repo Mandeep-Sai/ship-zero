@@ -1,5 +1,5 @@
 export interface ErrorResponse {
-  error: ErrorMessage;
+  error: GenericErrorMessage;
 }
 export interface SuccessResponse {
   response: Response;
@@ -7,9 +7,15 @@ export interface SuccessResponse {
   apiVersion: string;
 }
 export type APIResponse = SuccessResponse | ErrorResponse;
-export interface ErrorMessage {
+export type APIErrorResponse = ErrorResponse | Error404Response;
+
+export interface GenericErrorMessage {
   code: string;
   message: string;
+}
+export interface Error404Response {
+  error: string;
+  code: number;
 }
 
 export interface Request {
@@ -77,4 +83,8 @@ export enum SectorName {
 
 export enum StateDescription {
   Colorado = "Colorado",
+}
+
+export interface DisplayErrorProps {
+  data: APIErrorResponse;
 }

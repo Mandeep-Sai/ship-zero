@@ -2,6 +2,7 @@
   font-family: 'Roboto',sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  height: 100vh;
 
 
   /* color: rgba(255, 255, 255, 0.87);
@@ -12,4 +13,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body,h1,h2,h3{
+  margin: 0px;
+}
+
+h1{
+  font-weight: 700;
+}
+
+body{
+  height: 100vh;
 }
