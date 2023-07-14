@@ -1,9 +1,9 @@
+import { URL } from "../constants";
 import { APIResponse } from "../types";
+const API_KEY = import.meta.env.VITE_API_KEY as string;
 
 export const fetchData = async (): Promise<APIResponse> => {
-  const response = await fetch(
-    `https://api.eia.gov/v2/seriesid/ELEC.SALES.CO-RES.A?api_key=nIa7SZTCOf4VWCgh5fQUqXKNVdTZWzmzDDBVukfI`
-  );
+  const response = await fetch(`${URL}?api_key=${API_KEY}`);
   const parsedResponse = (await response.json()) as APIResponse;
   return parsedResponse;
 };
