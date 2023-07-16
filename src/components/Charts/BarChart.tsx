@@ -14,8 +14,12 @@ const BarChart = ({ data }: BarChartProps) => {
     data: [],
   });
 
+  const [startYear, setStartYear] = useState<number>(2014);
+  const [endYear, setEndYear] = useState<number>(2023);
+
   useEffect(() => {
-    const filteredBarChartData = filterBarChartData(data);
+    const filteredBarChartData = filterBarChartData(data, startYear, endYear);
+    console.log(filteredBarChartData);
     setChartData(filteredBarChartData);
   }, [data]);
 

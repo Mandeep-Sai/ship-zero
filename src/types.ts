@@ -102,7 +102,7 @@ interface Dataset {
   label: string;
   data: number[];
   backgroundColor: string;
-  borderColor: string;
+  // borderColor: string;
   borderWidth: number;
 }
 
@@ -115,3 +115,8 @@ export interface BarChartData {
   labels: string[];
   data: number[];
 }
+
+// export interface YearRange {
+//   start: number;
+//   end: number;
+// }
