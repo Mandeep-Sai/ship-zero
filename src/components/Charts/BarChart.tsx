@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarChartData, BarChartProps } from "../../types";
-import { barChartConfigData } from "../../utilities/barChartConfig";
+import {
+  barChartConfigData,
+  barChartOptions,
+} from "../../utilities/barChartConfig";
 import { filterBarChartData } from "../../utilities/utils";
 import "./BarChart.css";
 
@@ -28,7 +31,8 @@ const BarChart = ({ data }: BarChartProps) => {
     <div className="barChart_wrapper">
       <Bar
         data={barChartConfigData(chartData)}
-        options={{ maintainAspectRatio: false }}
+        // options={{ maintainAspectRatio: false }}
+        options={barChartOptions}
       />
     </div>
   );

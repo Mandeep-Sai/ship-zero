@@ -1,3 +1,4 @@
+import { ChartOptions } from "chart.js";
 import { BarChartData, ChartData } from "../types";
 
 export const barChartConfigData = (barChartData: BarChartData): ChartData => {
@@ -13,4 +14,15 @@ export const barChartConfigData = (barChartData: BarChartData): ChartData => {
       },
     ],
   };
+};
+
+export const barChartOptions: ChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    title: {
+      display: true,
+      text: "Chart.js Bar Chart",
+    },
+  },
 };
