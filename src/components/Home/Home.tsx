@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchData } from "../../services/electricitySales";
 import { APIResponse } from "../../types";
+import BarChart from "../Charts/BarChart";
 import Sales from "../Sales/Sales";
 import DisplayError from "../static/DisplayError";
 import Loading from "../static/Loading";
@@ -9,7 +10,6 @@ import "./Home.css";
 
 const Home = () => {
   const { data, isLoading } = useQuery<APIResponse>("sales", fetchData);
-  console.log(data);
 
   //   Loading state
   if (isLoading) {
@@ -18,16 +18,17 @@ const Home = () => {
 
   //   Response from API is object that has data or information about error
   if (data !== undefined) {
-    // If response from API has data
+    // If response from API has error message
+    // If 404 error need to display custom error message else display the error message from API
     if ("error" in data) {
       return <DisplayError data={data} />;
     }
-    // If response from API has error message
-    // If 404 error need to display custom error message else display the error message from API
+    // If response from API has data
     if ("response" in data) {
       return (
         <div className="home">
           <Sales salesData={data.response.data} />
+          <BarChart data={data.response.data} />
         </div>
       );
     }

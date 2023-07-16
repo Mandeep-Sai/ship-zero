@@ -92,3 +92,26 @@ export interface DisplayErrorProps {
 export interface SalesProps {
   salesData: Datum[];
 }
+
+export interface BarChartProps {
+  data: Datum[];
+}
+
+// Chart data properties
+interface Dataset {
+  label: string;
+  data: number[];
+  backgroundColor: string;
+  borderColor: string;
+  borderWidth: number;
+}
+
+export interface ChartData {
+  labels: string[];
+  datasets: Dataset[];
+}
+
+export interface BarChartData {
+  labels: string[];
+  data: number[];
+}
