@@ -88,3 +88,7 @@ export enum StateDescription {
 export interface DisplayErrorProps {
   data: APIErrorResponse;
 }
+
+export interface SalesProps {
+  salesData: Datum[];
+}

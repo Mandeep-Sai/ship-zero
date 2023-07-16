@@ -1,13 +1,16 @@
 import { useQuery } from "react-query";
 import { fetchData } from "../../services/electricitySales";
 import { APIResponse } from "../../types";
+import Sales from "../Sales/Sales";
 import DisplayError from "../static/DisplayError";
 import Loading from "../static/Loading";
 import "../static/StaticComponents.css";
+import "./Home.css";
 
 const Home = () => {
-  const { data, isLoading, error } = useQuery<APIResponse>("sales", fetchData);
-  console.log(error);
+  const { data, isLoading } = useQuery<APIResponse>("sales", fetchData);
+  console.log(data);
+
   //   Loading state
   if (isLoading) {
     return <Loading />;
@@ -22,7 +25,11 @@ const Home = () => {
     // If response from API has error message
     // If 404 error need to display custom error message else display the error message from API
     if ("response" in data) {
-      return <>{data.response.total}</>;
+      return (
+        <div className="home">
+          <Sales salesData={data.response.data} />
+        </div>
+      );
     }
   }
 
