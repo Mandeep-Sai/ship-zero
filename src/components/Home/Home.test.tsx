@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactNode } from "react";
 import { sampleSalesData } from "../../utilities/utils.test";
 
-const mockData = { data: undefined, isError: false, isLoading: true };
+const mockData = { data: {}, isError: false, isLoading: true };
 
 jest.mock("../../hooks/fetchElectricitySales.ts", () => ({
   useFetchElectricitySales: () => {
@@ -41,8 +41,8 @@ describe("home component", () => {
   });
 
   it("show error when unable to contact API", async () => {
-    mockData.data = undefined;
     mockData.isError = true;
+    mockData.data = {};
     mockData.isLoading = false;
     render(<Home />, { wrapper });
     await waitFor(() => {
