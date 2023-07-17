@@ -33,7 +33,6 @@ export const mobileColumns: GridColDef[] = [
     width: 300,
     align: "center",
     headerAlign: "center",
-
     disableColumnMenu: true,
     flex: 2,
   },
@@ -66,11 +65,12 @@ export const desktopColumns: GridColDef[] = [
   },
   {
     field: "sales",
-    headerName: "Sales",
+    headerName: "Sales (M-KWh)",
     type: "number",
     width: 300,
     align: "center",
     headerAlign: "center",
     flex: 1,
+    description: "Electricity Sales in Million Kilowatthours",
   },
 ];
