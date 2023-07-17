@@ -1,6 +1,4 @@
-import { useQuery } from "react-query";
-import { fetchData } from "../../services/electricitySales";
-import { APIResponse } from "../../types";
+import { useFetchElectricitySales } from "../../hooks/fetchElectricitySales";
 import BarChart from "../Charts/BarChart";
 import Sales from "../Sales/Sales";
 import DisplayError from "../static/DisplayError";
@@ -9,7 +7,7 @@ import "../static/StaticComponents.css";
 import "./Home.css";
 
 const Home = () => {
-  const { data, isLoading } = useQuery<APIResponse>("sales", fetchData);
+  const { data, isLoading } = useFetchElectricitySales();
 
   //   Loading state
   if (isLoading) {
@@ -26,7 +24,7 @@ const Home = () => {
     // If response from API has data
     if ("response" in data) {
       return (
-        <div className="home">
+        <div className="home" data-testid="home">
           <Sales salesData={data.response.data} />
           <BarChart data={data.response.data} />
         </div>
