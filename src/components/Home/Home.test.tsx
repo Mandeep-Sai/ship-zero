@@ -46,8 +46,8 @@ describe("home component", () => {
     mockData.isLoading = false;
     render(<Home />, { wrapper });
     await waitFor(() => {
-      const spinnerElement = screen.getAllByTestId("error");
-      expect(spinnerElement).toBeTruthy();
+      const errorElement = screen.getAllByTestId("error");
+      expect(errorElement).toBeTruthy();
     });
   });
 
@@ -61,8 +61,8 @@ describe("home component", () => {
     };
     render(<Home />, { wrapper });
     await waitFor(() => {
-      const spinnerElement = screen.getAllByTestId("home");
-      expect(spinnerElement).toBeTruthy();
+      const homeElement = screen.getAllByTestId("home");
+      expect(homeElement).toBeTruthy();
     });
   });
 });
