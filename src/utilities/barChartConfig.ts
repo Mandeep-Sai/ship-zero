@@ -17,12 +17,12 @@ export const barChartConfigData = (barChartData: BarChartData): ChartData => {
 };
 
 export const barChartOptions: ChartOptions = {
-  responsive: true,
+  // responsive: true,
   maintainAspectRatio: false,
-  plugins: {
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
+  // plugins: {
+  //   title: {
+  //     display: true,
+  //     text: "Chart.js Bar Chart",
+  //   },
+  // },
 };

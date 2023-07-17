@@ -12,7 +12,7 @@ const Sales = ({ salesData }: SalesProps) => {
   return (
     <>
       <div className="data_grid_wrapper">
-        <h1>
+        <h1 style={{ margin: "16px 0px" }}>
           Data from {latestYear.period} - {oldestYear.period}
         </h1>
         <DataGrid

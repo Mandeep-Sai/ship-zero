@@ -45,30 +45,39 @@ const BarChart = ({ data }: BarChartProps) => {
         Electricity Sales from {startYear} - {endYear}
       </h1>
       <div className="yearRangePicker_wrapper">
-        <DatePicker
-          selected={new Date(startYear, 0, 1)}
-          onChange={(date: Date) => onChangeStartYear(date)}
-          selectsStart
-          startDate={new Date(startYear, 0, 1)}
-          endDate={new Date(endYear, 0, 1)}
-          dateFormat="yyyy"
-          showYearPicker
-        />
-        <DatePicker
-          selected={new Date(endYear, 0, 1)}
-          onChange={(date: Date) => onChangeEndYear(date)}
-          selectsEnd
-          startDate={new Date(startYear, 0, 1)}
-          endDate={new Date(endYear, 0, 1)}
-          dateFormat="yyyy"
-          showYearPicker
+        <div>
+          <p>From : </p>
+          <DatePicker
+            selected={new Date(startYear, 0, 1)}
+            onChange={(date: Date) => onChangeStartYear(date)}
+            selectsStart
+            startDate={new Date(startYear, 0, 1)}
+            endDate={new Date(endYear, 0, 1)}
+            dateFormat="yyyy"
+            showYearPicker
+          />
+        </div>
+
+        <div>
+          <p>To : </p>
+          <DatePicker
+            selected={new Date(endYear, 0, 1)}
+            onChange={(date: Date) => onChangeEndYear(date)}
+            selectsEnd
+            startDate={new Date(startYear, 0, 1)}
+            endDate={new Date(endYear, 0, 1)}
+            dateFormat="yyyy"
+            showYearPicker
+          />
+        </div>
+      </div>
+      <div className="chart_wrapper">
+        <Bar
+          data={barChartConfigData(chartData)}
+          // options={{ maintainAspectRatio: false }}
+          options={barChartOptions}
         />
       </div>
-      <Bar
-        data={barChartConfigData(chartData)}
-        // options={{ maintainAspectRatio: false }}
-        options={barChartOptions}
-      />
     </div>
   );
 };
