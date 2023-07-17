@@ -1,6 +1,6 @@
-import { BarChartData, Datum } from "../types";
+import { BarChartData, Datum, filteredDatum } from "../types";
 
-export const filterTableData = (salesData: Datum[]) => {
+export const filterTableData = (salesData: Datum[]): filteredDatum[] => {
   return salesData.map(({ period, stateDescription, sectorName, sales }) => ({
     period,
     stateDescription,
@@ -30,18 +30,6 @@ export const filterBarChartData = (
     data: barChartData.data.slice().sort((a, b) => a - b),
   };
   return sortedBarChartData;
-  // return data
-  //   .filter(
-  //     (element) => element.period >= startYear && element.period <= endYear
-  //   )
-  //   .reduce(
-  //     (acc: BarChartData, { period, sales }) => {
-  //       acc.labels.push(period.toString());
-  //       acc.data.push(sales);
-  //       return acc;
-  //     },
-  //     { labels: [], data: [] }
-  //   );
 };
 
 export const latestData = (data: Datum[]) => {

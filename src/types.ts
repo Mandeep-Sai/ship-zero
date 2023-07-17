@@ -68,18 +68,25 @@ export interface Datum {
   stateid: Stateid;
   stateDescription: StateDescription;
   sectorid: Sectorid;
-  sectorName: SectorName;
+  sectorName: string;
   sales: number;
   "sales-units": SalesUnits;
+}
+
+export interface filteredDatum {
+  period: number;
+  stateDescription: StateDescription;
+  sectorName: string;
+  sales: number;
 }
 
 export enum SalesUnits {
   MillionKilowatthours = "million kilowatthours",
 }
 
-export enum SectorName {
-  Residential = "residential",
-}
+// export enum SectorName {
+//   Residential = "residential",
+// }
 
 export enum StateDescription {
   Colorado = "Colorado",
@@ -115,8 +122,3 @@ export interface BarChartData {
   labels: string[];
   data: number[];
 }
-
-// export interface YearRange {
-//   start: number;
-//   end: number;
-// }

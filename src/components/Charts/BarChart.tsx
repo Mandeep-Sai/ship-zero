@@ -3,14 +3,16 @@ import { Bar } from "react-chartjs-2";
 import { BarChartData, BarChartProps } from "../../types";
 import {
   barChartConfigData,
-  barChartOptions,
+  desktopBarChartOptions,
+  mobileBarChartOptions,
 } from "../../utilities/barChartConfig";
 import { filterBarChartData } from "../../utilities/utils";
 import "./BarChart.css";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 
-import { Chart as ChartJS, registerables, scales } from "chart.js";
+import { Chart as ChartJS, registerables } from "chart.js";
+import useWindowSize from "../../utilities/useWindowSize";
 // import { Chart } from "react-chartjs-2";
 ChartJS.register(...registerables);
 
@@ -22,6 +24,7 @@ const BarChart = ({ data }: BarChartProps) => {
 
   const [startYear, setStartYear] = useState<number>(2014);
   const [endYear, setEndYear] = useState<number>(2023);
+  const size = useWindowSize();
 
   const onChangeStartYear = (year: Date | null) => {
     if (year) {
@@ -37,7 +40,7 @@ const BarChart = ({ data }: BarChartProps) => {
   useEffect(() => {
     const filteredBarChartData = filterBarChartData(data, startYear, endYear);
     setChartData(filteredBarChartData);
-  }, [data, startYear, endYear]);
+  }, [data, startYear, endYear, size]);
 
   return (
     <div className="barChart_wrapper">
@@ -72,11 +75,17 @@ const BarChart = ({ data }: BarChartProps) => {
         </div>
       </div>
       <div className="chart_wrapper">
-        <Bar
-          data={barChartConfigData(chartData)}
-          // options={{ maintainAspectRatio: false }}
-          options={barChartOptions}
-        />
+        {size.width < 768 ? (
+          <Bar
+            data={barChartConfigData(chartData)}
+            options={mobileBarChartOptions}
+          />
+        ) : (
+          <Bar
+            data={barChartConfigData(chartData)}
+            options={desktopBarChartOptions}
+          />
+        )}
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ body,h1,h2,h3{
 }
 
 h1{
+  font-size: clamp(1.25rem, 0.9944rem + 1.1173vw, 2rem);
   font-weight: 700;
 }
 

@@ -1,4 +1,4 @@
-import { SalesProps } from "../../types";
+import { filteredDatum, SalesProps } from "../../types";
 import { DataGrid } from "@mui/x-data-grid";
 import useWindowSize from "../../utilities/useWindowSize";
 import { desktopColumns, mobileColumns } from "../../utilities/tableConfig";
@@ -18,7 +18,7 @@ const Sales = ({ salesData }: SalesProps) => {
         <DataGrid
           className="data_grid"
           rows={filterTableData(salesData)}
-          getRowId={(row) => row.period}
+          getRowId={(row: filteredDatum) => row.period}
           columns={size.width < 768 ? mobileColumns : desktopColumns}
           initialState={{
             pagination: {
