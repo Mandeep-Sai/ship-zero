@@ -24,13 +24,11 @@ const BarChart = ({ data }: BarChartProps) => {
   const [endYear, setEndYear] = useState<number>(2023);
 
   const onChangeStartYear = (year: Date | null) => {
-    console.log(year);
     if (year) {
       setStartYear(year?.getFullYear());
     }
   };
   const onChangeEndYear = (year: Date | null) => {
-    console.log(year);
     if (year) {
       setEndYear(year?.getFullYear());
     }
@@ -38,12 +36,14 @@ const BarChart = ({ data }: BarChartProps) => {
 
   useEffect(() => {
     const filteredBarChartData = filterBarChartData(data, startYear, endYear);
-    console.log(filteredBarChartData);
     setChartData(filteredBarChartData);
   }, [data, startYear, endYear]);
 
   return (
     <div className="barChart_wrapper">
+      <h1>
+        Electricity Sales from {startYear} - {endYear}
+      </h1>
       <div className="yearRangePicker_wrapper">
         <DatePicker
           selected={new Date(startYear, 0, 1)}

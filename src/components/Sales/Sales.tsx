@@ -2,14 +2,19 @@ import { SalesProps } from "../../types";
 import { DataGrid } from "@mui/x-data-grid";
 import useWindowSize from "../../utilities/useWindowSize";
 import { desktopColumns, mobileColumns } from "../../utilities/tableConfig";
-import { filterTableData } from "../../utilities/utils";
+import { filterTableData, latestData, oldestData } from "../../utilities/utils";
 
 const Sales = ({ salesData }: SalesProps) => {
   const size = useWindowSize();
+  const latestYear = latestData(salesData);
+  const oldestYear = oldestData(salesData);
 
   return (
     <>
       <div className="data_grid_wrapper">
+        <h1>
+          Data from {latestYear.period} - {oldestYear.period}
+        </h1>
         <DataGrid
           className="data_grid"
           rows={filterTableData(salesData)}

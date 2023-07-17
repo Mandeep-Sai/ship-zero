@@ -14,16 +14,44 @@ export const filterBarChartData = (
   startYear: number,
   endYear: number
 ) => {
-  return data
-    .filter(
-      (element) => element.period >= startYear && element.period <= endYear
-    )
-    .reduce(
-      (acc: BarChartData, { period, sales }) => {
-        acc.labels.push(period.toString());
-        acc.data.push(sales);
-        return acc;
-      },
-      { labels: [], data: [] }
-    );
+  const filteredData = data.filter(
+    (element) => element.period >= startYear && element.period <= endYear
+  );
+  const barChartData = filteredData.reduce(
+    (acc: BarChartData, { period, sales }) => {
+      acc.labels.push(period.toString());
+      acc.data.push(sales);
+      return acc;
+    },
+    { labels: [], data: [] }
+  );
+  const sortedBarChartData = {
+    labels: barChartData.labels.slice().sort((a, b) => Number(a) - Number(b)),
+    data: barChartData.data.slice().sort((a, b) => a - b),
+  };
+  return sortedBarChartData;
+  // return data
+  //   .filter(
+  //     (element) => element.period >= startYear && element.period <= endYear
+  //   )
+  //   .reduce(
+  //     (acc: BarChartData, { period, sales }) => {
+  //       acc.labels.push(period.toString());
+  //       acc.data.push(sales);
+  //       return acc;
+  //     },
+  //     { labels: [], data: [] }
+  //   );
+};
+
+export const latestData = (data: Datum[]) => {
+  return data.reduce((acc, cur) => {
+    return cur.period > acc.period ? cur : acc;
+  }, data[0]);
+};
+
+export const oldestData = (data: Datum[]) => {
+  return data.reduce((acc, cur) => {
+    return cur.period < acc.period ? cur : acc;
+  }, data[0]);
 };
