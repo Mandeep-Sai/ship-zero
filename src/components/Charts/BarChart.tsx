@@ -40,7 +40,7 @@ const BarChart = ({ data }: BarChartProps) => {
   useEffect(() => {
     const filteredBarChartData = filterBarChartData(data, startYear, endYear);
     setChartData(filteredBarChartData);
-  }, [data, startYear, endYear, size]);
+  }, [data, startYear, endYear]);
 
   return (
     <div className="barChart_wrapper">
@@ -75,17 +75,12 @@ const BarChart = ({ data }: BarChartProps) => {
         </div>
       </div>
       <div className="chart_wrapper">
-        {size.width < 768 ? (
-          <Bar
-            data={barChartConfigData(chartData)}
-            options={mobileBarChartOptions}
-          />
-        ) : (
-          <Bar
-            data={barChartConfigData(chartData)}
-            options={desktopBarChartOptions}
-          />
-        )}
+        <Bar
+          data={barChartConfigData(chartData)}
+          options={
+            size.width > 768 ? desktopBarChartOptions : mobileBarChartOptions
+          }
+        />
       </div>
     </div>
   );
