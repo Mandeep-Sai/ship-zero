@@ -65,17 +65,17 @@ export interface Response {
 
 export interface Datum {
   period: number;
-  stateid: Stateid;
-  stateDescription: StateDescription;
-  sectorid: Sectorid;
+  stateid: string;
+  stateDescription: string;
+  sectorid: string;
   sectorName: string;
   sales: number;
-  "sales-units": SalesUnits;
+  "sales-units": string;
 }
 
 export interface filteredDatum {
   period: number;
-  stateDescription: StateDescription;
+  stateDescription: string;
   sectorName: string;
   sales: number;
 }

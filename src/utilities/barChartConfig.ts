@@ -14,7 +14,7 @@ export const barChartConfigData = (barChartData: BarChartData): ChartData => {
     ],
   };
 };
-const formatYAxisValue = (value: number) => {
+export const formatYAxisValue = (value: number) => {
   if (value >= 1000000) {
     return (value / 1000000).toString() + "M";
   } else if (value >= 1000) {

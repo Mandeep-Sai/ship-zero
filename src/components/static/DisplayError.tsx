@@ -3,7 +3,7 @@ import "./StaticComponents.css";
 
 const DisplayError = ({ data }: DisplayErrorProps) => {
   return (
-    <div className="error">
+    <div className="error" data-testid="apierror">
       {"code" in data ? (
         <>
           <h1>{data.code}</h1>

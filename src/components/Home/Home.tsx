@@ -37,7 +37,7 @@ const Home = () => {
   //   Error state when we are unable to contact API (might be error in URL)
 
   return (
-    <div className="error">
+    <div className="error" data-testid="error">
       <h1>Unable to contact server.</h1>
       <h2>Please try again later</h2>
     </div>

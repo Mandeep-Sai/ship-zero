@@ -6,7 +6,7 @@ import {
   desktopBarChartOptions,
   mobileBarChartOptions,
 } from "../../utilities/barChartConfig";
-import { filterBarChartData, oldestData } from "../../utilities/utils";
+import { filterBarChartData } from "../../utilities/utils";
 import "./BarChart.css";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";

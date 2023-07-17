@@ -13,7 +13,7 @@ export const filterBarChartData = (
   data: Datum[],
   startYear: number,
   endYear: number
-) => {
+): BarChartData => {
   const filteredData = data.filter(
     (element) => element.period >= startYear && element.period <= endYear
   );
